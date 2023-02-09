@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  DATABASE_URL: mongodb://10.110.226.162:27017/planner
+  SECRET_KEY: NOTSTRONGENOUGH!
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    app: planner-lbl
+  name: env-prod

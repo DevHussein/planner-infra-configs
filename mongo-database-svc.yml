@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: planner-db-lbl
+  name: mongo-database-svc
+spec:
+  # type: NodePort
+  ports:
+    - port: 27017
+      targetPort: 27017
+      # nodePort: 32700
+  selector:
+    app: planner-db-lbl

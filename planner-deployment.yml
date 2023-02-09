@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: planner-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: planner-lbl
+  template:
+    metadata:
+      labels:
+        app: planner-lbl
+    spec:
+      containers:
+        - name: planner-container
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: DATABASE_URL
+                  name: env-prod
+            - name: SECRET_KEY
+              valueFrom:
+                configMapKeyRef:
+                  key: SECRET_KEY
+                  name: env-prod
+          image: husseinatdocker/planner-app:133
+          ports:
+            - containerPort: 8080
